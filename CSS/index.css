@@ -63,6 +63,18 @@
 }
 .menu--open {
   display: block;
+  animation-name: slideInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 .articles {
   margin-top: 95px;
@@ -77,6 +89,7 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: all 1s;
 }
 .article h2 {
   font-size: 28px;
@@ -104,6 +117,31 @@
 }
 .article-open {
   height: 400px;
+  backface-visibility: visible !important;
+  animation-name: flipInX;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
 }
 html,
 body {
